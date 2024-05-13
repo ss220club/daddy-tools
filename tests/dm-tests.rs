@@ -1,9 +1,8 @@
 use std::process::{Command, Output};
 
-#[cfg(feature = "text")]
 #[test]
-fn text() {
-    run_dm_tests("text");
+fn transliteration() {
+    run_dm_tests("transliteration");
 }
 
 fn run_dm_tests(name: &str) {

@@ -5,8 +5,8 @@ mod byond;
 #[allow(dead_code)]
 mod error;
 
-#[cfg(feature = "text")]
-pub mod text;
+pub mod transliteration;
+pub mod regexp;
 
 #[cfg(not(target_pointer_width = "32"))]
 compile_error!("rust-utils must be compiled for a 32-bit target");

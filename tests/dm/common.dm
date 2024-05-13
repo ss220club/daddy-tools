@@ -2,8 +2,8 @@
 #include "../../target/rust_utils.dm"
 
 /world/New()
-    world.log << RUST_UTILS
-    for(var/func in typesof(/test/proc))
-        log << "[func] [copytext("------------------------------------------------------------------------", length("[func]"))]"
-        call(new /test, func)()
-    del src
+	world.log << "Rust is at [RUST_UTILS]"
+	for(var/func in typesof(/test/proc))
+		log << "[func] [copytext("------------------------------------------------------------------------", length("[func]"))]"
+		call(new /test, func)()
+	del src

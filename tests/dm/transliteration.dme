@@ -5,3 +5,4 @@ var/test_cyr_text = "Смоке!"
 
 /test/proc/check_latin_to_cyrrilic()
     ASSERT(rustutils_latin_to_cyrillic(test_latin_text) == test_cyr_text)
+    ASSERT(rustutils_cyrillic_to_latin(test_cyr_text) == test_latin_text)
