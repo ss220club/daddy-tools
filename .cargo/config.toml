@@ -1,0 +1,13 @@
+[target]
+
+[build]
+target = "i686-unknown-linux-gnu"
+
+[test]
+target = "i686-unknown-linux-gnu"
+
+[i686-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

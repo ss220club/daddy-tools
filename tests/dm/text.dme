@@ -1,0 +1,7 @@
+#include "common.dm"
+
+var/test_latin_text = "Smoke!"
+var/test_cyr_text = "Смоке!"
+
+/test/proc/check_latin_to_cyrrilic()
+    ASSERT(rustutils_latin_to_cyrillic(test_latin_text) == test_cyr_text)
