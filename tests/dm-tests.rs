@@ -1,8 +1,15 @@
 use std::process::{Command, Output};
 
+#[cfg(feature = "transliteration")]
 #[test]
 fn transliteration() {
     run_dm_tests("transliteration");
+}
+
+#[cfg(feature = "regexp")]
+#[test]
+fn regexp() {
+    run_dm_tests("regexp");
 }
 
 fn run_dm_tests(name: &str) {
