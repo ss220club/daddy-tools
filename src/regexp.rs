@@ -9,7 +9,6 @@ fn init_regex_cache() -> RegexCache {
 
 static RE_CACHE: Mutex<Option<RegexCache>> = Mutex::new(None);
 
-
 fn compile_regex(pattern: &str) -> regex::Regex {
     let mut cache = RE_CACHE.lock().unwrap();
     if let Some(ref mut cache) = *cache {
@@ -31,8 +30,6 @@ fn regexp_replace(text: &str, re: &str, re_params: &str, replacement: &str) -> S
     re.replace_all(text, replacement).to_string()
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -50,7 +47,10 @@ mod tests {
         let replacement = "попадание мячем";
 
         for _ in 1..2 {
-            assert_eq!(expected_output, regexp_replace(input, pattern, pattern_flags, replacement));
+            assert_eq!(
+                expected_output,
+                regexp_replace(input, pattern, pattern_flags, replacement)
+            );
         }
     }
 }
