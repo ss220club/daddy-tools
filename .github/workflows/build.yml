@@ -22,13 +22,13 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Clippy (all features)
-        run: cargo clippy --target i686-pc-windows-msvc --all-features --locked -- -D warnings
+        run: cargo clippy --target i686-pc-windows-msvc --all-features -- -D warnings
 
       - name: Rustfmt
         run: cargo fmt -- --check
 
       - name: Build (release) (all features)
-        run: cargo build --target i686-pc-windows-msvc --all-features --locked --release
+        run: cargo build --target i686-pc-windows-msvc --all-features --release
 
       - uses: actions/upload-artifact@v3
         with:
@@ -61,18 +61,18 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Check (all features)
-        run: cargo check --target i686-unknown-linux-gnu --locked --all-features
+        run: cargo check --target i686-unknown-linux-gnu --all-features
 
       - name: Build (Debug) (all features)
-        run: cargo build --target i686-unknown-linux-gnu --locked --all-features
+        run: cargo build --target i686-unknown-linux-gnu --all-features
 
       - name: Run tests (all features)
-        run: cargo test --target i686-unknown-linux-gnu --locked --all-features
+        run: cargo test --target i686-unknown-linux-gnu --all-features
         env:
           BYOND_BIN: /home/runner/BYOND/byond/bin
 
       - name: Build (release) (all features)
-        run: cargo build --target i686-unknown-linux-gnu --locked --all-features --release
+        run: cargo build --target i686-unknown-linux-gnu --all-features --release
 
       - uses: actions/upload-artifact@v3
         with:
