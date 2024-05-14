@@ -7,12 +7,6 @@
 		if (fexists("./librust_utils.so"))
 			// No need for LD_LIBRARY_PATH badness.
 			return __rust_utils = "./librust_utils.so"
-		else if (fexists("./rust_utils"))
-			// Old dumb filename.
-			return __rust_utils = "./rust_utils"
-		else if (fexists("[world.GetConfig("env", "HOME")]/.byond/bin/rust_utils"))
-			// Old dumb filename in `~/.byond/bin`.
-			return __rust_utils = "rust_utils"
 		else
 			// It's not in the current directory, so try others
 			return __rust_utils = "librust_utils.so"
