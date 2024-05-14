@@ -1,11 +1,9 @@
 use std::{
-    io,
-    result,
-    str::Utf8Error,
+    io, result, str::Utf8Error
 };
 use thiserror::Error;
 
-pub type Result<T> = result::Result<T, Error>;
+pub type BResult<T> = result::Result<T, Error>;
 
 #[derive(Error, Debug)]
 pub enum Error {
