@@ -52,9 +52,9 @@ mod tests {
 
         let input = "Сука Гооооооооооооооол в гооооландские ворота.";
 
-        let expected_output = "Сука попадание мячем в гооооландские ворота.";
+        let expected_output = "Сука попадание мячом в гооооландские ворота.";
 
-        let replacement = "попадание мячем";
+        let replacement = "попадание мячом";
 
         for _ in 1..2 {
             assert_eq!(
@@ -74,7 +74,7 @@ mod tests {
 
         let expected_output = "Words replace.";
 
-        let replacement = "попадание мячем";
+        let replacement = "попадание мячом";
 
         for _ in 1..2 {
             assert_eq!(

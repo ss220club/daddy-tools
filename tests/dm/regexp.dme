@@ -4,9 +4,9 @@ var/input = "Сука Гооооооооооооооол в гооооландс
 var/pattern = @"\bго+л\b"
 var/pattern_flags = "i"
 var/incorrect_pattern_flags = "igu"
-var/replacement = "попадание мячем"
+var/replacement = "попадание мячом"
 
-var/expected_output = "Сука попадание мячем в гооооландские ворота."
+var/expected_output = "Сука попадание мячом в гооооландские ворота."
 var/expected_error = "Words replace."
 
 /test/proc/test_regexp_replace()
