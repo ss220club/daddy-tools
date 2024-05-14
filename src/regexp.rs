@@ -1,8 +1,6 @@
 use regex_cache::RegexCache;
 use std::sync::Mutex;
 
-
-
 byond_fn!(fn regex_replace (text, re, re_params, replacement) {
     Some(regexp_replace(text, re, re_params, replacement))
 });

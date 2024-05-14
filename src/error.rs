@@ -1,6 +1,4 @@
-use std::{
-    io, result, str::Utf8Error
-};
+use std::{io, result, str::Utf8Error};
 use thiserror::Error;
 
 pub type BResult<T> = result::Result<T, Error>;
@@ -18,7 +16,6 @@ pub enum Error {
     #[error("Invalid algorithm specified.")]
     InvalidAlgorithm,
 }
-
 
 impl From<Utf8Error> for Error {
     fn from(source: Utf8Error) -> Self {
