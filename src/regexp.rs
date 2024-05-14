@@ -1,6 +1,10 @@
 use regex_cache::RegexCache;
 use std::sync::Mutex;
 
+byond_fn!(fn regex_replace (text, re, re_params, replacement) {
+    Some(regexp_replace(text, re, re_params, replacement))
+});
+
 const CACHE_SIZE: usize = 128;
 
 fn init_regex_cache() -> RegexCache {
@@ -18,10 +22,6 @@ fn compile_regex(pattern: &str) -> regex::Regex {
         init_regex_cache().compile(pattern).unwrap().clone()
     }
 }
-
-byond_fn!(fn regex_replace (text, re, re_params, replacement) {
-    Some(regexp_replace(text, re, re_params, replacement))
-});
 
 fn regexp_replace(text: &str, re: &str, re_params: &str, replacement: &str) -> String {
     let pattern = format!(r"(?{}){}", re_params, re);
