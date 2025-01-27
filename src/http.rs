@@ -1,10 +1,10 @@
 use crate::{error::Result, jobs};
 use serde::{Deserialize, Serialize};
-use ureq::OrAnyStatus;
 use std::cell::RefCell;
 use std::collections::{BTreeMap, HashMap};
 use std::io::Write;
 use std::time::Duration;
+use ureq::OrAnyStatus;
 
 // ----------------------------------------------------------------------------
 // Interface
