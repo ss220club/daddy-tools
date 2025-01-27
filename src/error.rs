@@ -1,7 +1,7 @@
 use std::{io, result, str::Utf8Error};
 use thiserror::Error;
 
-pub type BResult<T> = result::Result<T, Error>;
+pub type Result<T> = result::Result<T, Error>;
 
 #[derive(Error, Debug)]
 pub enum Error {
@@ -15,6 +15,12 @@ pub enum Error {
     Io(#[from] io::Error),
     #[error("Invalid algorithm specified.")]
     InvalidAlgorithm,
+    #[cfg(feature = "http")]
+    #[error(transparent)]
+    JsonSerialization(#[from] serde_json::Error),
+    #[cfg(feature = "http")]
+    #[error(transparent)]
+    Request(#[from] Box<ureq::Error>),
 }
 
 impl From<Utf8Error> for Error {

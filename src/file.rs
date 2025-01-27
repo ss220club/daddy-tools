@@ -1,4 +1,4 @@
-use crate::error::BResult;
+use crate::error::Result;
 use base64::Engine;
 use std::{
     fs::File,
@@ -12,7 +12,7 @@ byond_fn!(fn file_write(data, path, ...rest) {
     write(data, path, should_decode_b64).err()
 });
 
-fn write(data: &str, path: &str, base64decode: bool) -> BResult<usize> {
+fn write(data: &str, path: &str, base64decode: bool) -> Result<usize> {
     let path: &std::path::Path = path.as_ref();
     if let Some(parent) = path.parent() {
         std::fs::create_dir_all(parent)?;
