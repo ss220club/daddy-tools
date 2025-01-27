@@ -1,0 +1,29 @@
+#include "common.dm"
+
+#define STATUS200URL "https://httpstat.us/200"
+#define STATUS400URL "https://httpstat.us/400"
+
+/proc/execute_request(url)
+    rustutils_create_async_http_client()
+
+    var/id = rustutils_http_request_async(RUSTUTILS_HTTP_METHOD_GET, url, "", list(), null)
+
+    var/r
+    do {
+        r = rustutils_http_check_request(id)
+        sleep(1)
+    } while(r == RUSTUTILS_JOB_NO_RESULTS_YET)
+
+    rustutils_close_async_http_client()
+
+    var/list/L = json_decode(r)
+    return L
+
+
+/test/proc/test_200()
+    var/list/L = execute_request(STATUS200URL)
+    ASSERT(L["status_code"] == 200)
+
+/test/proc/test_400()
+    var/list/L = execute_request(STATUS400URL)
+    ASSERT(L["status_code"] == 200)
