@@ -26,3 +26,10 @@
 /test/proc/test_400()
     var/list/L = execute_request(STATUS400URL)
     ASSERT(L["status_code"] == 400)
+
+/test/proc/nonexistent()
+    try
+        var/list/L = execute_request("http://nonexistent.nonexistent")
+        CRASH("Should have failed")
+    catch
+        return

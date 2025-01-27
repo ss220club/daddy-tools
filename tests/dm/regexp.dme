@@ -15,5 +15,4 @@ var/expected_error = "Words replace."
 
 /test/proc/crash()
     var/output = rustutils_regex_replace(input, pattern, incorrect_pattern_flags, replacement)
-    world.log << output
     ASSERT(output == expected_error)

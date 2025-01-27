@@ -20,7 +20,7 @@ pub enum Error {
     JsonSerialization(#[from] serde_json::Error),
     #[cfg(feature = "http")]
     #[error(transparent)]
-    Request(#[from] Box<ureq::Error>),
+    Response(#[from] ureq::Transport),
 }
 
 impl From<Utf8Error> for Error {
