@@ -3,6 +3,8 @@ use serde::{Deserialize, Serialize};
 use std::cell::RefCell;
 use std::collections::{BTreeMap, HashMap};
 use std::io::Write;
+use std::time::Duration;
+use ureq::OrAnyStatus;
 
 // ----------------------------------------------------------------------------
 // Interface
@@ -95,7 +97,8 @@ fn construct_request(
                     "head" => client.head(url),
                     _ => client.get(url),
                 }
-                .set("User-Agent", &format!("{PKG_NAME}/{VERSION}"));
+                .set("User-Agent", &format!("{PKG_NAME}/{VERSION}"))
+                .timeout(Duration::from_secs(30));
 
                 let mut final_body = body.as_bytes().to_vec();
 
@@ -138,7 +141,7 @@ fn construct_request(
 }
 
 fn submit_request(prep: RequestPrep) -> Result<String> {
-    let response = prep.req.send_bytes(&prep.body).map_err(Box::new)?;
+    let response = prep.req.send_bytes(&prep.body).or_any_status()?;
 
     let body;
     let mut resp = Response {

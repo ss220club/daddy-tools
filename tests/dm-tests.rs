@@ -12,6 +12,12 @@ fn regexp() {
     run_dm_tests("regexp");
 }
 
+#[cfg(feature = "http")]
+#[test]
+fn http() {
+    run_dm_tests("http");
+}
+
 fn run_dm_tests(name: &str) {
     std::env::remove_var("RUST_BACKTRACE");
 
