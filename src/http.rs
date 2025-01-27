@@ -1,8 +1,8 @@
 use crate::{error::Result, jobs};
 use serde::{Deserialize, Serialize};
+use std::cell::RefCell;
 use std::collections::{BTreeMap, HashMap};
 use std::io::Write;
-use std::cell::RefCell;
 
 // ----------------------------------------------------------------------------
 // Interface
@@ -167,16 +167,16 @@ fn submit_request(prep: RequestPrep) -> Result<String> {
     Ok(serde_json::to_string(&resp)?)
 }
 
-byond_fn!(fn start_http_client() {
-    HTTP_CLIENT.with(|cell| {
-        cell.replace(Some(ureq::agent()))
-    });
-    Some("")
-});
+byond_fn!(
+    fn start_http_client() {
+        HTTP_CLIENT.with(|cell| cell.replace(Some(ureq::agent())));
+        Some("")
+    }
+);
 
-byond_fn!(fn shutdown_http_client() {
-    HTTP_CLIENT.with(|cell| {
-        cell.replace(None)
-    });
-    Some("")
-});
+byond_fn!(
+    fn shutdown_http_client() {
+        HTTP_CLIENT.with(|cell| cell.replace(None));
+        Some("")
+    }
+);
